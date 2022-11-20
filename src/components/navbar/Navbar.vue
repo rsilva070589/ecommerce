@@ -121,7 +121,10 @@ import {indexStore} from '../../stores/index'
         store.recursos.telaContentAtual='FINALIZAR';
         store.recursos.telaAtualNome='FINALIZAR PEDIDO';
   break;
-
+  case store.recursos.telaContentAtual=='SELECTPRODUTO':   
+        store.recursos.telaContentAtual='PRODUTOS';
+        store.recursos.telaAtualNome='CATALAGO';
+  break;
 
 
  

@@ -28,17 +28,13 @@
               <div style="color: black;                            
               ">
                 
-              Alguma observação?
-              <textarea 
-              v-model="obsItem"
-              type="text"      
-              maxlength="50"            
-              placeholder="Ex: Capricha ai!"
-              style="width: 100%;
-                    height: 100px;
-                    margin: 0px 0px 10px 0px;
-              " />
+             
               </div>
+
+              <Ingredientes/> 
+              <AdicionaisProduto/>  
+            
+
 
               <div 
                    style="background-color: blueviolet; 
@@ -49,6 +45,7 @@
                    margin: 0px 0px 0px 0px;" >
 
                             <!-- item add e remove-->  
+ 
                        
               <div  class="card"
                     style="width: 24%; 
@@ -86,11 +83,14 @@
                 </div> 
               <!-- fim add e remove-->
               <div>
+
+                
                 
               </div>
                 <span style="font-size: 20px; color: white;" @click="selectProduto(store.itemSelect.cdproduto, 
                                                                                         store.itemSelect.precofinalvenda, 
-                                                                                        store.itemSelect.descricao)">Adicionar  </span> 
+                                                                                        store.itemSelect.descricao
+                                                                                        )">Adicionar  </span> 
                 <span style="font-size: 20px; color: white;" @click="selectProduto(store.itemSelect.cdproduto, 
                                                                                         store.itemSelect.precofinalvenda, 
                                                                                         store.itemSelect.descricao)">R$ {{formataDinheiro(store.itemSelect.precofinalvenda * store.itemSelect.qtde,2)}}</span> 
@@ -114,56 +114,12 @@
  import {indexStore} from '../../stores/index'  
  const store = indexStore();
 
- store.dadosEmpresa.ecommerce=true
+ store.dadosEmpresa.ecommerce=true 
  
-console.log(store.produtos)
 console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo)
 
-const grupo = g => g.cdgrupo == store.selectItem.codGrupo
-const listaAtualProd =  store.produtos.filter(grupo)  
-
-
-listaAtualProd.map(i => {
-  i.select = null
-})
-
-   listaAtualProd.forEach(a => {
-      a.ingredientesproduto.forEach( b=>{ 
-          var ingrediente = {
-              nome: a.descricao,
-              cdproduto: a.cdproduto,
-              cdingrediente: b.cdingrediente, 
-              eobrigatorio: b.eobrigatorio, 
-              ingrediente: b.ingrediente
-          }
-          store.ingredientesProduto.push(ingrediente)
-      }  
-      ) 
-   })
-
-   
-   listaAtualProd.forEach(a => { 
-    store.adicionaisProduto=a.adicionaisproduto
-     a.adicionaisproduto.forEach( b=> {
-      // console.log(b)
-       const adc  = {
-            cdproduto: a.cdproduto,
-            adicionaisitensproduto: b.adicionaisitensproduto,
-            cdgrupoadc: b.cdgrupoadc, 
-            desc_grupo_adc: b.desc_grupo_adc, 
-            eobrigatorio: b.eobrigatorio,
-            esabor: b.esabor,
-            nome: b.nome,
-            ordemgrupoadc: b.ordemgrupoadc, 
-            orientacao_grupo_adc: b.orientacao_grupo_adc,
-            qtdemax: b.qtdemax,
-            qtdemin: b.qtdemin 
-          } 
-       // console.log(adc)
-        //store.adicionaisItensProduto.push(adc)
-        })
-      })
-  
+ 
+ 
   
    
    function formataDinheiro(item) {
@@ -177,11 +133,11 @@ listaAtualProd.map(i => {
            .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
        }
    
-   const selectProduto = (cdproduto, precofinalvenda, descricao) => {   
+   const selectProduto = (cdproduto, precofinalvenda, descricao,urlprincipal) => {   
      
         
         console.log('add o item:  '+cdproduto + ' ' + descricao)  
-            
+       /**      
         store.pizzaSelecao.push(          
                 {
                 'cdproduto': cdproduto,
@@ -193,42 +149,36 @@ listaAtualProd.map(i => {
                 'valortotal': precofinalvenda * store.itemSelect.qtde
                 }
             )
-      
+      */
           //  console.log('valor select : ' +listaAtualProd[index].select)
             // console.log(store.pizzaSelecao) 
  
-        store.pizzaSelecao[0].adicionais=store.adicionalSelecao
-        store.pizzaSelecao[0].ingredientes=store.ingredientesSelecao
-        const corpoPedido = {        
-                    pedido: {
-                                cdcliente: store.cliente.cdcliente,
-                                cdtaxaentrega: 48,
-                                cdendereco: store.selectItem.cdcliente_end,
-                                cdplanopagamento: 3,
-                                datahora_pedido: Date.now,
-                                nomeplanopagamento: store.formaPgtoDetalhe.nomeplanopagamento,
-                                formapagamento: store.formaPgtoDetalhe.formapagamento,
-                                obs:            '',
-                                tipopedido:     store.selectItem.tipoEntrega,
-                                taxaentrega:    store.selectItem.taxaentrega,                                
-                                valortroco: 0,
-                                pedidoitem: []
-                            }                    
-                 }    
+       // store.pizzaSelecao[0].adicionais=store.adicionalSelecao
+       // store.pizzaSelecao[0].ingredientes=store.ingredientesSelecao
+         
 
                  store.pizzaSelecao.forEach(dados => {                
                                     store.pedido.pedido.pedidoitem.push(dados)
                                 })
-    console.log(store.pedido)  
+   
 
             store.recursos.telaContentAtual ='PRODUTOS';
             store.recursos.telaAtualNome    ='CATALAGO';
-            store.itemSelect.qtde=1
-            store.pizzaSelecao = []
- 
- 
-   
+            store.itemSelect.qtde=1 
+            novoPedido()
+  
    }
+
+   const novoPedido = ()=> {      
+     store.pizzaSelecao=[];
+     store.adicionalSelecao =[];
+     store.ingredientesSelecao = [];
+     store.ingredientesProduto = [];
+     store.adicionaisItensProduto = [];
+  }
+
+    
+ 
    
    </script>
    

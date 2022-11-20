@@ -168,7 +168,10 @@
               margin: 5px;         
        "       
        v-for=" (i, index) in listaAtualProd" :key="i.cdproduto"       
-       @click="onDetalheProduto(i.cdproduto,i.imagesproduto.urlprincipal,i.precofinalvenda,i.descricao,i.detalhes, index)"
+       @click="onDetalheProduto(i.cdproduto,i.imagesproduto.urlprincipal,i.precofinalvenda,i.descricao,i.detalhes, index);
+               selectProduto(i.cdproduto,i.precofinalvenda,i.descricao,index, store.selectItem.qtdemax,store.selectItem.urlprincipal)
+       "
+       
        
        >  
        <div style="
@@ -194,12 +197,8 @@
                     ">
                     <div v-if=" i.ingredientes">
                       {{i.ingredientes}}
-                    </div>
-              
+                    </div>              
              </span> 
-
-             
-             
   
             <div>
               
@@ -314,7 +313,7 @@ listaAtualProd.map(i => {
            .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
        }
    
-   const selectItem = (cdproduto,  precofinalvenda, descricao, index, qtdemax) => {   
+   const selectProduto = (cdproduto,  precofinalvenda, descricao, index, qtdemax,urlprincipal) => {   
      var numeroARemover = cdproduto;
      let itemExiste = store.pizzaSelecao.findIndex(obg => obg.cdproduto  == numeroARemover)
 
@@ -327,6 +326,7 @@ listaAtualProd.map(i => {
       if (itemExiste < 0)
         {       
         console.log('add o item:  '+cdproduto + ' ' + descricao + ' index: '+index)  
+     
             
         store.pizzaSelecao.push(          
                 {
@@ -336,7 +336,8 @@ listaAtualProd.map(i => {
                 'isadicionalprod': 'n',
                 'valorunitario': precofinalvenda,
                 'quantidade': 1,
-                'valortotal': precofinalvenda * 1
+                'valortotal': precofinalvenda * 1,
+                'url': store.itemSelect.urlprincipal
                 }
             )
             listaAtualProd[index].select=true

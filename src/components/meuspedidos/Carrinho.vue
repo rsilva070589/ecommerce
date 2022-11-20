@@ -25,8 +25,12 @@
           </div>
           
     </div>    
+    
  
     <div v-for="(p, indexA) in store.pedido" :key="indexA" >
+
+
+
 
       <div v-for="(pi, indexB) in p.pedidoitem" :key="indexB" class="">
         <div style="display: flex;
@@ -36,6 +40,15 @@
                     border-bottom: 1px solid Grey;
                     "
                 class="grid-container">
+
+    
+
+           <div v-if="store.dadosEmpresa.ecommerce">
+            <img style="width: 50px;
+                        height: 50px;" 
+                :src="pi.url" alt="">
+          </div>
+
            
          <div class="item1">
           {{pi.descricao}} - R$ {{formataDinheiro(pi.valorunitario * pi.quantidade, 2)}} 
@@ -45,6 +58,7 @@
             </div> 
           </div>          
          </div> 
+         
 
 
         <div  class="item3"
@@ -296,9 +310,7 @@ const novoPedido = ()=> {
      store.ingredientesSelecao = [];
      store.ingredientesProduto = [];
      store.adicionaisItensProduto = [];
-  }
-
-    
+  }    
 }
 </script>
 
