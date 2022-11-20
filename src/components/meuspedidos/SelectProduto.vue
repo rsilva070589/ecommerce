@@ -2,10 +2,7 @@
     <div  style="width: 100%;">
 
       <a href="#" class="flex flex-col  bg-white rounded-lg border shadow-md md:flex md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-          <span @click="store.recursos.telaAtual='MENU'; somar()"
-              color="red"
-              style="padding: 10px; color: blueviolet;"
-          >Voltar</span>
+    
           
           <div style="position: relative;">
             <img class="object-cover  md:rounded-none md:rounded" 
@@ -88,8 +85,15 @@
                   </div>
                 </div> 
               <!-- fim add e remove-->
-                <span style="font-size: 20px; color: white;" @click="addProdutoCarrinho">Adicionar  </span> 
-                <span style="font-size: 20px; color: white;" @click="addProdutoCarrinho">R$ {{formataDinheiro(store.itemSelect.precofinalvenda * store.itemSelect.qtde,2)}}</span> 
+              <div>
+                
+              </div>
+                <span style="font-size: 20px; color: white;" @click="selectProduto(store.itemSelect.cdproduto, 
+                                                                                        store.itemSelect.precofinalvenda, 
+                                                                                        store.itemSelect.descricao)">Adicionar  </span> 
+                <span style="font-size: 20px; color: white;" @click="selectProduto(store.itemSelect.cdproduto, 
+                                                                                        store.itemSelect.precofinalvenda, 
+                                                                                        store.itemSelect.descricao)">R$ {{formataDinheiro(store.itemSelect.precofinalvenda * store.itemSelect.qtde,2)}}</span> 
                  
               </div>
           </div>
@@ -173,19 +177,10 @@ listaAtualProd.map(i => {
            .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
        }
    
-   const selectProduto = (cdproduto, precofinalvenda, descricao, index, qtdemax) => {   
-     var numeroARemover = cdproduto;
-     let itemExiste = store.pizzaSelecao.findIndex(obg => obg.cdproduto  == numeroARemover)
-
-   if (   store.pizzaSelecao.length >= store.selectItem.qtdemax
-       && store.selectItem.qtdemax > 0
-       && itemExiste < 0
-   ) {
-    console.log('limite atingido')
-   } else{
-      if (itemExiste < 0)
-        {       
-        console.log('add o item:  '+cdproduto + ' ' + descricao + ' index: '+index)  
+   const selectProduto = (cdproduto, precofinalvenda, descricao) => {   
+     
+        
+        console.log('add o item:  '+cdproduto + ' ' + descricao)  
             
         store.pizzaSelecao.push(          
                 {
@@ -194,23 +189,43 @@ listaAtualProd.map(i => {
                 'observacao': 'observacao teste componente Produtos',
                 'isadicionalprod': 'n',
                 'valorunitario': precofinalvenda,
-                'quantidade': 1,
-                'valortotal': precofinalvenda * 1
+                'quantidade': store.itemSelect.qtde,
+                'valortotal': precofinalvenda * store.itemSelect.qtde
                 }
             )
-            listaAtualProd[index].select=true
+      
           //  console.log('valor select : ' +listaAtualProd[index].select)
             // console.log(store.pizzaSelecao) 
-      }else {
-        console.log('remove o item:  '+cdproduto + ' ' + descricao)
-        listaAtualProd[index].select=false
-        var numeroARemover = cdproduto;
-        var indice = store.pizzaSelecao.findIndex(obg => obg.cdproduto  == numeroARemover)
-        store.pizzaSelecao.splice(indice, 1);
-        //console.log('valor select : ' +listaAtualProd[index].select)
-        // console.log(store.pizzaSelecao); 
-      }  
-   } 
+ 
+        store.pizzaSelecao[0].adicionais=store.adicionalSelecao
+        store.pizzaSelecao[0].ingredientes=store.ingredientesSelecao
+        const corpoPedido = {        
+                    pedido: {
+                                cdcliente: store.cliente.cdcliente,
+                                cdtaxaentrega: 48,
+                                cdendereco: store.selectItem.cdcliente_end,
+                                cdplanopagamento: 3,
+                                datahora_pedido: Date.now,
+                                nomeplanopagamento: store.formaPgtoDetalhe.nomeplanopagamento,
+                                formapagamento: store.formaPgtoDetalhe.formapagamento,
+                                obs:            '',
+                                tipopedido:     store.selectItem.tipoEntrega,
+                                taxaentrega:    store.selectItem.taxaentrega,                                
+                                valortroco: 0,
+                                pedidoitem: []
+                            }                    
+                 }    
+
+                 store.pizzaSelecao.forEach(dados => {                
+                                    store.pedido.pedido.pedidoitem.push(dados)
+                                })
+    console.log(store.pedido)  
+
+            store.recursos.telaContentAtual ='PRODUTOS';
+            store.recursos.telaAtualNome    ='CATALAGO';
+            store.itemSelect.qtde=1
+            store.pizzaSelecao = []
+ 
  
    
    }
