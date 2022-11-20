@@ -1,0 +1,17 @@
+
+{
+    "sucess": "true",
+    "dadosloja": {
+        "databasecliente": "BancoDadosAloPizza.fdb",
+        "nomedaloja": "Alô Pizza",
+        "fonecel": "61999704737",
+        "minentrega": 50,
+        "minretirada": 20,
+        "horaentrega": 0,
+        "horaretirada": 0,
+        "statuslojaaberta": true,
+        "textohorarioatendimento": "Atendimento de Segunda a Quinta das 15hs às 00hs e Sexta a Domingo das 15hs às 00hs",
+        "latitude": -22.95201,
+        "longitude": -43.21026
+    }
+}

@@ -1,0 +1,96 @@
+
+
+{
+    "databasecliente": "BancoDadosAloPizza.fdb",
+    "pedido": {
+        "cdcliente": "7501",
+        "cdproduto": "48",
+        "cdendereco": "4401",
+        "cdplanopagamento": "3",
+        "datahora_pedido": "10/27/2022, 9:47:14 PM",
+        "nomeplanopagamento": "Cartão Débito",
+        "formapagamento": "Cartao",
+        "obs": "Caso tive cebola, sem cebola por favor ",
+        "pedidoitem": [
+            {
+                "cdproduto": "2",
+                "descricao": "CHOCOLATE/FRANGO CATUPIRY",
+				"":
+              
+				"adicionais":(produto filho) [
+						 {
+							"cdproduto": "13",
+							"descricao": "FRANGO CATUPIRY",
+							"observacao": "",
+							"isadicionalprod": "s",
+							"valorunitario": "0",
+							"quantidade": "1",
+							"valortotal": "0",
+  						    "ingredientes": [
+								{
+									"nome": "Nenhum ingrediente cadastrado...",
+									"ativo": "1"
+								}
+							],
+						}
+				]
+                "observacao": "",
+                "isadicionalprod": "n", (temAdicionais)
+                "valorunitario": "31.9",
+                "quantidade": "1",
+                "valortotal": "31.9"
+            },
+            {
+                "cdproduto": "34",
+                "descricao": "CHOCOLATE",
+                "observacao": "",
+                "isadicionalprod": "s",
+                "valorunitario": "0",
+                "quantidade": "1",
+                "valortotal": "0"
+            },
+            {
+                "cdproduto": "13",
+                "descricao": "FRANGO CATUPIRY",
+                "observacao": "",
+                "isadicionalprod": "s",
+                "valorunitario": "0",
+                "quantidade": "1",
+                "valortotal": "0"
+            },
+            {
+                "cdproduto": "3",
+                "descricao": "CALABRESA",
+                "ingredientes": [
+                    {
+                        "cdproduto": "3",
+                        "cdingrediente": "",
+                        "nome": "muçarela",
+                        "ativo": "1"
+                    },
+                    {
+                        "cdproduto": "3",
+                        "cdingrediente": "",
+                        "nome": "calabresa",
+                        "ativo": "1"
+                    },
+                    {
+                        "cdproduto": "3",
+                        "cdingrediente": "",
+                        "nome": "orégano",
+                        "ativo": "1"
+                    }
+                ],
+                "observacao": "",
+                "isadicionalprod": "n",
+                "valorunitario": "31.9",
+                "quantidade": "1",
+                "valortotal": "31.9"
+            }
+        ],
+        "tipopedido": "2",
+        "taxaentrega": "5",
+        "valorpedido": "68.8",
+        "valortroco": "0"
+    }
+}

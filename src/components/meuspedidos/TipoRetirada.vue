@@ -1,0 +1,106 @@
+<template>
+
+  <div style="padding: 15px;">
+  
+  </div>
+  <div style="text-align: center; color: white; font-size: 20px; font-weight: 500;">
+    Escolha uma opção para prosseguir:
+  </div> 
+  
+  
+  <div class="center" >
+          <div 
+           @click=" 
+                   store.recursos.telaContentAtual='GRUPOPRODUTOS';
+                   store.recursos.telaAtualNome='CARDAPIO';
+                   store.recursos.sidebar = false;
+                   store.selectItem.tipoEntrega=2;
+           "
+            style="background-color: white;
+           width: 97%;          
+            height: 105px; 
+            margin-top: 7px;
+            padding: 25px 15px 15px 25px; 
+            border-radius: 8px;
+            ">
+            <div style=" margin:px; 
+                         text-align: ; 
+                         padding: 0px;
+                         display: flex; 
+                         ">
+              <div style=" margin: 10px 0px 0px 0px; width: 30px; fill: ; background-color: ;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M280 32c-13.3 0-24 10.7-24 24s10.7 24 24 24h57.7l16.4 30.3L256 192l-45.3-45.3c-12-12-28.3-18.7-45.3-18.7H64c-17.7 0-32 14.3-32 32v32h96c88.4 0 160 71.6 160 160c0 11-1.1 21.7-3.2 32h70.4c-2.1-10.3-3.2-21-3.2-32c0-52.2 25-98.6 63.7-127.8l15.4 28.6C402.4 276.3 384 312 384 352c0 70.7 57.3 128 128 128s128-57.3 128-128s-57.3-128-128-128c-13.5 0-26.5 2.1-38.7 6L418.2 128H480c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32H459.6c-7.5 0-14.7 2.6-20.5 7.4L391.7 78.9l-14-26c-7-12.9-20.5-21-35.2-21H280zM462.7 311.2l28.2 52.2c6.3 11.7 20.9 16 32.5 9.7s16-20.9 9.7-32.5l-28.2-52.2c2.3-.3 4.7-.4 7.1-.4c35.3 0 64 28.7 64 64s-28.7 64-64 64s-64-28.7-64-64c0-15.5 5.5-29.7 14.7-40.8zM187.3 376c-9.5 23.5-32.5 40-59.3 40c-35.3 0-64-28.7-64-64s28.7-64 64-64c26.9 0 49.9 16.5 59.3 40h66.4C242.5 268.8 190.5 224 128 224C57.3 224 0 281.3 0 352s57.3 128 128 128c62.5 0 114.5-44.8 125.8-104H187.3zM128 384c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32z"/></svg>
+              </div>     
+  
+              <div style="display: block; margin-left: 10px; ">
+                <div style="font-weight: 500;">
+                  ENTREGA EM DOMICÍLIO                   
+                </div>
+                <div>
+                  Tempo médio: {{store.dadosEmpresa.dadosloja?.minentrega}}Min
+                </div>
+              </div>
+            
+  
+            
+            <br> 
+          </div>
+  
+         </div>
+  </div>
+  
+  
+  
+  <div class="center">
+          <div 
+            @click=" store.recursos.telaContentAtual='GRUPOPRODUTOS';
+                      store.recursos.telaAtualNome='CARDAPIO';
+                      store.recursos.sidebar = false;
+                      store.selectItem.tipoEntrega=1;                  
+                    "
+        
+        style="background-color: white;
+            width: 97%;          
+            height: 105px; 
+            margin-top: 0px;
+            padding: 25px 15px 15px 25px; 
+            border-radius: 8px;
+  
+            ">
+            <div style="color: ; text-align: ; padding: 0px; display: flex; justify-content: ;">
+              <div style=" margin: 5px 10px 0px 0px; width: 30px; fill: ; background-color: ;">
+                <div style=" margin: 5px 10px 0px 0px; width: 30px; fill: ; background-color: ;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="35" fill="currentColor" class="bi bi-handbag-fill" viewBox="0 0 16 16">
+                  <path d="M8 1a2 2 0 0 0-2 2v2H5V3a3 3 0 1 1 6 0v2h-1V3a2 2 0 0 0-2-2zM5 5H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11v1.5a.5.5 0 0 1-1 0V5H6v1.5a.5.5 0 0 1-1 0V5z"/>
+                  </svg>           
+                </div>             
+                </div>       
+              
+              <div style="display: block; margin-left: 10px; ">
+                <div style="font-weight: 500;">
+                  RETIRADA NO LOCAL
+                </div>
+                <div>
+                  Tempo médio: {{store.dadosEmpresa.dadosloja?.minretirada}}Min
+                </div>
+              </div>
+  
+  
+            </div>
+  
+         </div>
+  </div>
+          
+  
+  </template>
+  
+  <script setup>
+  import IconMoto from '../icons/IconMoto.vue'
+  import {indexStore} from '../../stores/index'
+  const store = indexStore(); 
+   
+  </script>
+  
+  <style>
+  
+  </style>

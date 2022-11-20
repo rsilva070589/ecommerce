@@ -1,0 +1,6 @@
+--2022-11-08 14:52:44--  https://firebasestorage.googleapis.com/v0/b/projetodev-176bd.appspot.com/o/instantclient_21_4.zip?alt=media
+Resolving firebasestorage.googleapis.com (firebasestorage.googleapis.com)... 142.250.184.74, 142.250.184.106, 142.250.180.138, ...
+Connecting to firebasestorage.googleapis.com (firebasestorage.googleapis.com)|142.250.184.74|:443... connected.
+HTTP request sent, awaiting response... 403 Forbidden
+2022-11-08 14:52:44 ERROR 403: Forbidden.
+
