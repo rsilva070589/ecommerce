@@ -9,6 +9,8 @@
   </div>
   
   <Produtos v-if="store.recursos.telaContentAtual=='PRODUTOS'"/> 
+  <SelectProduto v-if="store.recursos.telaContentAtual=='SELECTPRODUTO'"/> 
+
   <div 
         v-if="store.recursos.etapaPedido == 1 
            && store.pizzaSelecao.length >= store.selectItem.qtdemax     
@@ -31,7 +33,9 @@
               store.recursos.telaContentAtual!='STATUSPEDIDO' &&
               store.recursos.telaContentAtual!='LISTAPEDIDO' &&
               store.recursos.telaContentAtual!='MINHACONTA' &&
-              store.recursos.telaContentAtual!='AREAENTREGA'
+              store.recursos.telaContentAtual!='AREAENTREGA' &&
+              store.recursos.telaContentAtual!='SELECTPRODUTO'
+              
              "
        style="  
               height: 94vh;    
@@ -81,6 +85,7 @@
 </template>
 
 <script setup>
+import SelectProduto from '../meuspedidos/SelectProduto.vue';
 import {ref}          from 'vue';
 import AreaEntrega from '../meuspedidos/pospedido/AreaEntrega.vue';
 import MinhaConta from '../meuspedidos/pospedido/MinhaConta.vue';

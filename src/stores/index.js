@@ -52,6 +52,17 @@ export const indexStore = defineStore("rotas", () =>{
          
     const pedidoAtual = ref ([ ]);
 
+    const itemSelect = ref ({
+        cdproduto: 'DEFAULT', 
+        descricao: 'DEFAULT',        
+        precofinalvenda: 0,
+        detalhes: 0,        
+        qtde: 1,
+        obsItem: 'DEFAULT',
+        index: null,
+        urlprincipal: null        
+    });
+
     const selectItem =ref({
         tipoEntrega: 0,
         codGrupo: 0, 
@@ -185,7 +196,8 @@ const bairroSearch = ''
         selectPedido,
         pedidoAtual,
         validation,
-        bairroSearch
+        bairroSearch,
+        itemSelect
         
     }
 });

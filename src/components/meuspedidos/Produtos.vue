@@ -168,7 +168,8 @@
               margin: 5px;         
        "       
        v-for=" (i, index) in listaAtualProd" :key="i.cdproduto"       
-       @click="selectProduto(i.cdproduto,i.precofinalvenda,i.descricao,index, store.selectItem.qtdemax)"
+       @click="onDetalheProduto(i.cdproduto,i.imagesproduto.urlprincipal,i.precofinalvenda,i.descricao,i.detalhes, index)"
+       
        >  
        <div style="
               display: flex;           
@@ -240,7 +241,7 @@
  
  </template>
    
-   <script setup>
+<script setup>
  
  import IconSwitchOn from '../icons/IconSwitchOn.vue'
  import IconSwitchOff from '../icons/IconSwitchOff.vue'
@@ -313,7 +314,7 @@ listaAtualProd.map(i => {
            .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
        }
    
-   const selectProduto = (cdproduto, precofinalvenda, descricao, index, qtdemax) => {   
+   const selectItem = (cdproduto,  precofinalvenda, descricao, index, qtdemax) => {   
      var numeroARemover = cdproduto;
      let itemExiste = store.pizzaSelecao.findIndex(obg => obg.cdproduto  == numeroARemover)
 
@@ -354,6 +355,26 @@ listaAtualProd.map(i => {
  
    
    }
+
+
+   function onDetalheProduto (cdproduto,urlprincipal,precofinalvenda,descricao,detalhes, index) {
+  
+  
+  store.itemSelect.cdproduto = cdproduto 
+  store.itemSelect.descricao = descricao 
+  store.itemSelect.precofinalvenda = precofinalvenda 
+  store.itemSelect.detalhes = detalhes
+  store.itemSelect.urlprincipal = urlprincipal
+  store.itemSelect.index = index
+ 
+  store.recursos.telaContentAtual ='SELECTPRODUTO';
+  store.recursos.telaAtualNome    ='DETALHES';
+
+  console.log('Item Selecionado: '+store.itemSelect.id)
+
+  
+ 
+}
    
    </script>
    
