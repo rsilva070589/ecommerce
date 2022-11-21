@@ -117,7 +117,7 @@ store.dadosProdutos=dadosProdutos;
 
 
 const getAmbiente = () => {
-    if (document.domain.split(".")[0] == 'localhost') {
+    if (document.domain.split(".")[0] == 'localhost' && document.domain.split(".")[0] == 'ecommerce-img') {
       store.recursos.dominio='suapizzaria'
     }else{
       store.recursos.dominio=document.domain.split(".")[0]
