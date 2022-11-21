@@ -1,15 +1,14 @@
 <template>
-    <div  style="width: 100%;">
+    <div  style="width: 100%; margin-top: 49px ">
 
-      <a href="#" class="flex flex-col  bg-white rounded-lg border shadow-md md:flex md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+      <div href="#" class="flex flex-col  bg-white rounded-lg border shadow-md md:flex md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
     
           
-          <div style="position: relative;">
+          <div style="">
             <img class="object-cover  md:rounded-none md:rounded" 
                :src="store.itemSelect.urlprincipal" alt="produto"
                style="
-               width: 300px; height: 220px;
-               padding: 0px 15px 0px 0px;
+               width: 100%; height: 250px; 
                display: block;
                margin-left: auto;
                margin-right: auto;
@@ -18,86 +17,72 @@
           </div>
           
                
-          <div style="padding: 10px;">
-             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{store.itemSelect.nome}} R$ {{formataDinheiro(store.itemSelect.precofinalvenda,2)}}</h5>
-             
-             <span style="color: black; margin: 0px 0px 15px 0px;">
-              {{store.itemSelect.descricao}}
+          <div style="padding: 10px; display: flex; 
+                    justify-content: space-between;
+                    font-size: 20px;
+                    ">
+            <span style="color: black; margin: 0px 0px 0px 0px;">
+              {{store.itemSelect.descricao}} 
              </span>
 
-              <div style="color: black;                            
-              ">
-                
+             <span class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> R$ {{formataDinheiro(store.itemSelect.precofinalvenda,2)}}</span>
              
-              </div>
-
-              <Ingredientes/> 
-              <AdicionaisProduto/>  
-            
+      
 
 
-              <div 
-                   style="background-color: blueviolet; 
-                   justify-content: space-between;
-                   display: flex; 
-                   padding: 10px; 
-                   border-radius: 8px; 
-                   margin: 0px 0px 0px 0px;" >
-
-                            <!-- item add e remove-->  
- 
-                       
-              <div  class="card"
-                    style="width: 24%; 
-                    height: 25px; 
-                    padding: 0px;
-                    border-style: ridge;                          
-                    color: black;
-                    margin: 5px 0px 0px 0px;
-                    "
-            >
-              <div style=" display: flex; ">
-                <div> 
-                  <div>
-                    <IconMinus style="margin: 3px 8px 3px 3px; fill: red;"
-                    @click="
-                      () => {
-                        store.itemSelect.qtde > 1 ? store.itemSelect.qtde = store.itemSelect.qtde - 1 : '';
-                        
-                      }
-                    "  
-                    ></IconMinus> 
-                  </div>                    
-                   </div>
-                   <div>{{store.itemSelect.qtde}}</div>
-                    <div >
-                      <IconPlus style="margin: 3px 0px 3px 8px; ; fill: red;"
-                        @click="() => {
-                                (store.itemSelect.qtde = store.itemSelect.qtde + 1)
-                        }"                          
-                        size="15"
-                        > </IconPlus
-                      >
-                    </div>
-                  </div>
-                </div> 
-              <!-- fim add e remove-->
-              <div>
-
-                
-                
-              </div>
-                <span style="font-size: 20px; color: white;" @click="selectProduto(store.itemSelect.cdproduto, 
-                                                                                        store.itemSelect.precofinalvenda, 
-                                                                                        store.itemSelect.descricao
-                                                                                        )">Adicionar  </span> 
-                <span style="font-size: 20px; color: white;" @click="selectProduto(store.itemSelect.cdproduto, 
-                                                                                        store.itemSelect.precofinalvenda, 
-                                                                                        store.itemSelect.descricao)">R$ {{formataDinheiro(store.itemSelect.precofinalvenda * store.itemSelect.qtde,2)}}</span> 
-                 
-              </div>
+       
+  
           </div>
-      </a> 
+        </div> 
+
+
+<div style="margin: 0px 0px 15px 0px;">
+  <AdicionaisProduto/>  
+      <Ingredientes/> 
+  
+</div>
+
+
+<div style="bottom: 0; position: fixed; width: 100%;">
+  <button type="button" 
+  class="btn btn-success btn-lg btn3d"
+              style="width: 96%; margin: 5px;;
+      
+              "            
+        @click="selectProduto(store.itemSelect.cdproduto, 
+                                              store.itemSelect.precofinalvenda, 
+                                              store.itemSelect.descricao)"      
+              >
+          <span class="glyphicon glyphicon-remove"></span>
+   <!-- item add e remove-->  
+      
+        <div style="display: flex; 
+                          justify-content: space-between;                  
+                          ">
+
+                    <!-- fim add e remove-->
+
+                    <div 
+                                              
+                          style="  width: 50%; height: 30px;"
+                                              >
+                      Adicionar
+                    </div>
+          
+
+          <div style="font-size: 20px; color: white;" @click="selectProduto(store.itemSelect.cdproduto, 
+                                                                              store.itemSelect.precofinalvenda, 
+                                                                              store.itemSelect.descricao)">
+              R$ {{store.formataDinheiro(store.somar(),2)}} 
+          </div> 
+        </div>
+
+      </button>
+
+</div>
+ 
+
+  
         
     </div>
 
@@ -117,10 +102,7 @@
  store.dadosEmpresa.ecommerce=true 
  
 console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo)
-
  
- 
-  
    
    function formataDinheiro(item) {
          let venda = item;
@@ -134,7 +116,8 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
        }
    
    const selectProduto = (cdproduto, precofinalvenda, descricao,urlprincipal) => {   
-     
+    store.pizzaSelecao[0].adicionais=store.adicionalSelecao
+    store.pizzaSelecao[0].ingredientes=store.ingredientesSelecao 
         
         console.log('add o item:  '+cdproduto + ' ' + descricao)  
        /**      

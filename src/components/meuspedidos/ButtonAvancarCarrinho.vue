@@ -16,7 +16,7 @@
               >
               <span class="glyphicon glyphicon-ok"></span> 
               Adicionar (Total: R$ 
-                {{formataDinheiro(somar(),2)}} 
+                {{store.formataDinheiro(store.somar(),2)}} 
                 )
       </button>
       </div>
@@ -32,16 +32,7 @@ import {indexStore} from '../../stores/index'
 const store = indexStore(); 
 
  
-function somar() {
-    var somarAdicionais = store.adicionalSelecao.map(item => {
-    return(item.valorunitario * item.quantidade)
-    })
-  let soma = 0
-  for(let i in somarAdicionais) {
-    soma += somarAdicionais[i] 
-  }
-  return soma + store.pizzaSelecao[0].quantidade * store.pizzaSelecao[0].valorunitario
-}
+
 
 function pizzaMaiorValor() {   
     var maiorValor = store.pizzaSelecao.filter(p => p.isadicionalprod=='n').map((a) => {return a.valorunitario})
@@ -52,18 +43,6 @@ function pizzaMaiorValor() {
   return max
 }
 console.log('Valor Maior Pizza de 2 sabores é: '+pizzaMaiorValor())
-
-
-function formataDinheiro(item) {
-         let venda = item;
-         if (!!venda && venda.toString().includes(",")) {
-           venda = venda.toString().replace(",", ".");
-         }
-         return parseFloat(venda)
-           .toFixed(2)
-           .replace(".", ",")
-           .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
-       }
  
 
 
@@ -74,24 +53,8 @@ const avancar = () =>{
  
  if (store.selectItem.qtdemax < 2) {    
         store.pizzaSelecao[0].adicionais=store.adicionalSelecao
-        store.pizzaSelecao[0].ingredientes=store.ingredientesSelecao
-        const corpoPedido = {        
-                    pedido: {
-                                cdcliente: store.cliente.cdcliente,
-                                cdtaxaentrega: 48,
-                                cdendereco: store.selectItem.cdcliente_end,
-                                cdplanopagamento: 3,
-                                datahora_pedido: Date.now,
-                                nomeplanopagamento: store.formaPgtoDetalhe.nomeplanopagamento,
-                                formapagamento: store.formaPgtoDetalhe.formapagamento,
-                                obs:            '',
-                                tipopedido:     store.selectItem.tipoEntrega,
-                                taxaentrega:    store.selectItem.taxaentrega,                                
-                                valortroco: 0,
-                                pedidoitem: []
-                            }                    
-        }    
-
+        store.pizzaSelecao[0].ingredientes=store.ingredientesSelecao 
+        
     store.pizzaSelecao.forEach(dados => {                
                 store.pedido.pedido.pedidoitem.push(dados)
             })

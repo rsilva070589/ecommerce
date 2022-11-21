@@ -45,7 +45,7 @@
           <div>
             R$ 
               <span style="color: ;">
-                 {{formataDinheiro(p.pedido.valorpedido, 2)}}
+                 {{store.formataDinheiro(p.pedido.valorpedido, 2)}}
               </span> 
           </div>
           
@@ -91,17 +91,7 @@ function statusPedido (status) {
   
   return statusNew
 }
-
-function formataDinheiro(item) {
-         let venda = item;
-         if (!!venda && venda.toString().includes(",")) {
-           venda = venda.toString().replace(",", ".");
-         }
-         return parseFloat(venda)
-           .toFixed(2)
-           .replace(".", ",")
-           .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
-       }
+ 
 
 const getPedidosCliente = ()=> {
  

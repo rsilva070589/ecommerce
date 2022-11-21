@@ -20,7 +20,9 @@
         style="display: flex;
         justify-content: center;              
   ">
-    <ButtonAvancar style="position: fixed;"/>
+
+    <ButtonAvancar v-if="!store.dadosEmpresa.ecommerce" style="position: fixed;"/>
+    <ButtonAvancar v-if="store.dadosEmpresa.ecommerce && store.selectItem.montagemrequerida" style="position: fixed;"/>
                 
   </div>
 

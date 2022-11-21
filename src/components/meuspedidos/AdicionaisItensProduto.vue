@@ -23,7 +23,7 @@
                             
             <div style="color: green;">
               <div style="color: green;"> 
-                R$  {{formataDinheiro( l.precofinalvenda, 2) }}
+                R$  {{store.formataDinheiro( l.precofinalvenda, 2) }}
               </div> 
             </div>       
       </div>
@@ -107,16 +107,7 @@ const listaGrupoItemAdicional =  store.adicionaisItensProduto.filter(grupoItemAd
 console.log('listaGrupoItemAdicional')
 console.log(listaGrupoItemAdicional)
 
-function formataDinheiro(item) {
-        let venda = item;
-        if (!!venda && venda.toString().includes(",")) {
-          venda = venda.toString().replace(",", ".");
-        }
-        return parseFloat(venda)
-          .toFixed(2)
-          .replace(".", ",")
-          .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
-      } 
+ 
       
       
   const selectAdicional = (cdproduto,  precofinalvenda, descricao, index, cdgrupoadc, qtdemax) => {

@@ -10,7 +10,7 @@
               style="width: 100%;     
                 margin: 0px 0px 0px 0px;       
               "
-              @click="avancar()"
+              @click="store.addItemCarrinho()"
               >
               <span class="glyphicon glyphicon-ok"></span> 
         > Avançar
@@ -21,51 +21,11 @@
 </template>
 
 <script setup>
+
 import {indexStore} from '../../stores/index'  
 const store = indexStore(); 
 
 
-
-const avancar =() =>{
-  console.log( 'grupo qtde maxima avancar: ' +store.selectItem.qtdemax)
- 
-if (store.selectItem.qtdemax >= 1) {    
-        store.recursos.etapaPedido=2;
-        store.recursos.telaAtualNome='OPCIONAIS E INGREDIENTES'
-} else {
-        store.recursos.etapaPedido=3
-        store.recursos.telaAtualNome='CARRINHO'  
-        store.recursos.alertaCarrinho=false
-        store.pizzaSelecao[0].adicionais=store.adicionalSelecao
-        store.pizzaSelecao[0].ingredientes=store.ingredientesSelecao
-        const corpoPedido = {        
-                    pedido: {
-                                cdcliente: store.cliente.cdcliente,
-                                cdtaxaentrega: 48,
-                                cdendereco: store.selectItem.cdcliente_end,
-                                cdplanopagamento: 3,
-                                datahora_pedido: Date.now,
-                                nomeplanopagamento: store.formaPgtoDetalhe.nomeplanopagamento,
-                                formapagamento: store.formaPgtoDetalhe.formapagamento,
-                                obs:            '',
-                                tipopedido:     store.selectItem.tipoEntrega,
-                                taxaentrega:    store.selectItem.taxaentrega,                                
-                                valortroco: 0,
-                                pedidoitem: []
-                            }                    
-        }    
-
-    store.pizzaSelecao.forEach(dados => {                
-                                    store.pedido.pedido.pedidoitem.push(dados)
-                                })
-    console.log(store.pedido)   
-}
-
-       
- 
- 
-}
- 
 </script>
 
 <style>

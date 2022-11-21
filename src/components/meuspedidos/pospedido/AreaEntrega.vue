@@ -21,7 +21,7 @@
                     </div> 
                     
                     <div>
-                        R${{formataDinheiro(b.valorentrega, 2)}}
+                        R${{store.formataDinheiro(b.valorentrega, 2)}}
                     </div>
                     
                 </div>
@@ -35,16 +35,7 @@
 import {indexStore} from '../../../stores/index'  
 const store = indexStore(); 
 
-function formataDinheiro(item) {
-        let venda = item;
-        if (!!venda && venda.toString().includes(",")) {
-          venda = venda.toString().replace(",", ".");
-        }
-        return parseFloat(venda)
-          .toFixed(2)
-          .replace(".", ",")
-          .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
-      } 
+ 
 
 </script>
 

@@ -60,39 +60,29 @@
  import Carregando from '../content/Carregando.vue';
 import {indexStore} from '../../stores/index'  
 const store = indexStore(); 
-
+store.dadosEmpresa.ecommerce =true 
 
  
 const selectGrupo = (codGrupo,   nomegrupo,  montagemrequerida, requeropcional, qtdemax, qtdemin)=>{
-  store.recursos.telaContentAtual='PRODUTOS'
-  store.recursos.telaAtualNome=nomegrupo
-  store.selectItem.codGrupo=codGrupo 
-  store.recursos.etapaPedido=1  
-  store.selectItem.qtdemax=qtdemax
-  store.selectItem.qtdemin=qtdemin
-  store.selectItem.montagemrequerida=montagemrequerida
-  store.selectItem.requeropcional=requeropcional
-  novoPedido()
-}
+     if (codGrupo==1){store.selectItem.urlprincipal='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4Zyu-T5WQ7bLxROPZPWo7u65WqNKpnk7NWQ&usqp=CAU'}
+    if (codGrupo==2){store.selectItem.urlprincipal='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4Zyu-T5WQ7bLxROPZPWo7u65WqNKpnk7NWQ&usqp=CAU'}
+    if (codGrupo==3){store.selectItem.urlprincipal='https://bolodamadre.com.br/wp-content/uploads/2020/05/refrigerante-1.jpg'}
 
-const pizzaMontagem = ()=> {
-  const grupo = g => g.cdgrupo == store.selectItem.codGrupo
-  const listaAtualProd =  store.produtos.filter(grupo) 
+    store.recursos.telaContentAtual='PRODUTOS'
+    store.recursos.telaAtualNome=nomegrupo
+    store.selectItem.codGrupo=codGrupo 
+    store.recursos.etapaPedido=1  
+    store.selectItem.qtdemax=qtdemax
+    store.selectItem.qtdemin=qtdemin
+    store.selectItem.montagemrequerida=montagemrequerida
+    store.selectItem.requeropcional=requeropcional
+    novoPedido()
+
+
  
-  store.itensSelecao.push(          
-          {
-          'cdproduto': listaAtualProd[0].cdproduto,
-          'descricao': listaAtualProd[0].descricao,
-          'adicionais': [],
-          'observacao': 'observacao teste componente grupo produtos',
-          'isadicionalprod': 'n',
-          'valorunitario': 0,
-          'quantidade': 1,
-          'valortotal': 0 * 1
-        }
-      )
-      console.log(store.itensSelecao)
+  
 }
+ 
 
 const novoPedido = ()=> {
      store.pizzaSelecao=[];

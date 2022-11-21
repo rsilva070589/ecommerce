@@ -41,20 +41,27 @@
                     "
                 class="grid-container">
 
-    
-
+  
            <div v-if="store.dadosEmpresa.ecommerce">
-            <img style="width: 50px;
+            <img  v-if="pi.url"
+                  style="width: 50px;
                         height: 50px;" 
                 :src="pi.url" alt="">
+
+                <img  v-if="!pi.url"
+                  style="width: 50px;
+                        height: 50px;" 
+                :src="pi.adicionais[0].url" alt="">    
+
+                   
           </div>
 
            
-         <div class="item1">
-          {{pi.descricao}} - R$ {{formataDinheiro(pi.valorunitario * pi.quantidade, 2)}} 
+         <div class="item1" style="width: 180px;">
+          {{pi.descricao}} - R$ {{store.formataDinheiro(pi.valorunitario * pi.quantidade, 2)}} 
           <div v-for="(adic, indexC) in pi.adicionais" :key="indexC">
             <div style="font-size: 12px; margin-left: 0px; border-style: ;">
-              * {{adic.descricao}} - R${{formataDinheiro(adic.valorunitario * adic.quantidade, 2)}}
+              * {{adic.descricao}} - R${{store.formataDinheiro(adic.valorunitario * adic.quantidade, 2)}}
             </div> 
           </div>          
          </div> 
@@ -141,7 +148,7 @@
     <!--Botoes-->
     
     <div style="text-align: center; padding: 5px; font-size: 22px;">
-      Valor Total do Pedido: R${{formataDinheiro(store.pedido.pedido.valorpedido,2)}}
+      Valor Total do Pedido: R${{store.formataDinheiro(store.pedido.pedido.valorpedido,2)}}
     </div>
     
 
@@ -220,7 +227,7 @@ const maisUm = (index)=> {
     console.log(a)
   }) 
   store.pedido.pedido.pedidoitem[index].quantidade = qtde+1
-  totalPedido()
+  store.totalPedido()
 }
 
 const menosUm = (index)=> {
@@ -232,86 +239,41 @@ const menosUm = (index)=> {
       console.log(a)
     }) 
     store.pedido.pedido.pedidoitem[index].quantidade = qtde -1
-    totalPedido()
+    store.totalPedido()
   }
 }
 
 const deleteItem = (index)=> {   
     store.pedido.pedido.pedidoitem.splice(index, 1)
-    totalPedido()
-  
-}
+    store.totalPedido()
  
-function totalPedido ()  {
-
-/** somatoria de Todos os adicionais */
-  const ArrayProv = []
-  var pitem = store.pedido.pedido?.pedidoitem?.map(a => {    
     
-    var t = a.adicionais?.filter(f => f.isadicionalprod == 's')
-      
-    var x = t?.map(i => {return i.valortotal}) || 0    
-    //console.log(x)
-    var soma = 0;
-      for(var i = 0; i < x.length; i++) {
-          soma += x[i];
-      }      
-      ArrayProv.push(soma)    
-     
-  })
-
-  
-  var totalAdicionais = 0;
-  for(var i = 0; i < ArrayProv.length; i++) {
-    totalAdicionais += ArrayProv[i];
-  }
-/** fim somatoria de Todos os adicionais */
+}
  
 
-      var somarPizza = store.pedido.pedido.pedidoitem.map(pedidoitem => {
-      return (pedidoitem.valorunitario * pedidoitem.quantidade) // + somaAdic      
-      }) 
-      let totalpizzas = 0
-      for(let i in somarPizza) {
-        totalpizzas += somarPizza[i] 
-      }
-       
-      store.pedido.pedido.valorpedido =  totalpizzas +totalAdicionais
-  
-} 
+const novoPedido = ()=> {       
+        if (store.selectItem.tipoEntrega == 0) { 
+            store.recursos.telaContentAtual='TIPORETIRADA';   
+            store.recursos.telaAtualNome='TIPO DE ENTREGA';  
+            store.recursos.etapaPedido=99;                    
+          }else{
+            store.recursos.telaContentAtual='GRUPOPRODUTOS'; 
+            store.recursos.telaAtualNome='CARDAPIO';  
+            store.recursos.etapaPedido=0; 
+            store.pizzaSelecao=[];
+            store.adicionalSelecao =[];
+            store.ingredientesSelecao = [];
+            store.ingredientesProduto = [];
+            store.adicionaisItensProduto = [];
+              
+        }   
+}  
 
-  totalPedido()
 
-function formataDinheiro(item) {
-         let venda = item;
-         if (!!venda && venda.toString().includes(",")) {
-           venda = venda.toString().replace(",", ".");
-         }
-         return parseFloat(venda)
-           .toFixed(2)
-           .replace(".", ",")
-           .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
-       }
-
+  store.totalPedido()
+ 
       
-const novoPedido = ()=> {      
-  if (store.selectItem.tipoEntrega == 0) {
-      console.log('tipo entrega zero')
-      store.recursos.telaContentAtual='TIPORETIRADA';   
-     store.recursos.telaAtualNome='TIPO DE ENTREGA';  
-     store.recursos.etapaPedido=99;      
-        
-  }else{
-    store.recursos.telaContentAtual='GRUPOPRODUTOS'; 
-     store.recursos.telaAtualNome='CARDAPIO';  
-     store.recursos.etapaPedido=0; 
-     store.pizzaSelecao=[];
-     store.adicionalSelecao =[];
-     store.ingredientesSelecao = [];
-     store.ingredientesProduto = [];
-     store.adicionaisItensProduto = [];
-  }    
-}
+
 </script>
 
 <style>

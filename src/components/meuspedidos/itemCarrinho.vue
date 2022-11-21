@@ -42,7 +42,7 @@
                           ">
                     
                     <div style="font-size: 16 px;color:black"> 
-                      R$  {{formataDinheiro(store.carrinho[index].valor, 2) }}
+                      R$  {{store.formataDinheiro(store.carrinho[index].valor, 2) }}
                     </div>                    
                                   
                     <!-- item add e remove-->  
@@ -159,16 +159,7 @@
    
   }
   
-  function formataDinheiro(item) {
-        let venda = item;
-        if (!!venda && venda.toString().includes(",")) {
-          venda = venda.toString().replace(",", ".");
-        }
-        return parseFloat(venda)
-          .toFixed(2)
-          .replace(".", ",")
-          .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
-      }
+ 
   
    
   </script>

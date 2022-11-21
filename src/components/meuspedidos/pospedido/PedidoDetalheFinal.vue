@@ -94,7 +94,7 @@
       <div style="margin-left: 8px; font-size: 11px;"
          v-for="(p2, indexP2) in p1.adicionais" :key="indexP2"
       >
-      {{p2.descricao}} {{formataDinheiro(p2.valortotal,2)}}     
+      {{p2.descricao}} {{store.formataDinheiro(p2.valortotal,2)}}     
       </div>
       </div>
       <div class="item3"></div>
@@ -209,17 +209,7 @@ var tempo = null;
  
 
  
-function formataDinheiro(item) {
-         let venda = item;
-         if (!!venda && venda.toString().includes(",")) {
-           venda = venda.toString().replace(",", ".");
-         }
-         return parseFloat(venda)
-           .toFixed(2)
-           .replace(".", ",")
-           .replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
-       }       
-
+ 
 
 
 console.log('Codigo do Pedido atual é' + store.selectPedido.cdpedido)
