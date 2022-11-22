@@ -45,12 +45,15 @@
            <div v-if="store.dadosEmpresa.ecommerce">
             <img  v-if="pi.url"
                   style="width: 50px;
-                        height: 50px;" 
+                        height: 50px;
+                        border-radius: 5px;
+                        " 
                 :src="pi.url" alt="">
 
                 <img  v-if="!pi.url"
                   style="width: 50px;
-                        height: 50px;" 
+                        height: 50px;
+                        border-radius: 5px;" 
                 :src="pi.adicionais[0].url" alt="">    
 
                    

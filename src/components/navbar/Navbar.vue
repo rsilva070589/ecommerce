@@ -38,7 +38,7 @@
        store.recursos.alertaCarrinho=false
        store.recursos.telaContentAtual='PRODUTOS';
        store.recursos.telaAtualNome='CARRINHO'">
- <IconCarrinho />
+    <IconCarrinho />
   </div>
   
 
