@@ -3,8 +3,8 @@
     "sucess": "true",
     "dadosloja": {
         "databasecliente": "BancoDadosAloPizza.fdb",
-        "nomedaloja": "Alô Pizza",
-        "fonecel": "61999704737",
+        "nomedaloja": "Empresa Exemplo",
+        "fonecel": "62991655036",
         "minentrega": 50,
         "minretirada": 20,
         "horaentrega": 0,

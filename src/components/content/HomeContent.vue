@@ -120,7 +120,7 @@ const getAmbiente = () => {
     if (document.domain.split(".")[0] == 'localhost') {
       store.recursos.dominio='suapizzaria'
     }else{
-      if (document.domain.split(".")[0] == 'ecommerce-img'){
+      if (document.domain.split(".")[0] == 'ecommerce-exemplo'){
         store.recursos.dominio='suapizzaria'
       }else{
         store.recursos.dominio=document.domain.split(".")[0]

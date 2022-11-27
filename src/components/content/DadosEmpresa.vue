@@ -51,7 +51,8 @@
           
           </div>
           
-           {{store.dadosEmpresa.dadosloja?.fonecel}}
+        <!-- {{store.dadosEmpresa.dadosloja?.fonecel}}-->   
+            (11) 9 7859-3025 / (62) 9 9165-5036
          </div>
 
      
@@ -62,7 +63,7 @@
         <div style=" color: white;">
           <i class="bi bi-geo-alt-fill"></i>  
         </div>
-          Planaltina
+          Goiania
      <!--{{store.dadosEmpresa.dadosloja?.latitude}} - {{store.dadosEmpresa.dadosloja?.longitude}}  --> 
       </div>
  
