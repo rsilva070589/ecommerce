@@ -5,7 +5,8 @@
     
           
           <div style="">
-            <img class="object-cover  md:rounded-none md:rounded" 
+            <img  
+              class="d-block w-100"
                :src="store.itemSelect.imagens[store.indexImagem]?.url" alt="produto"
                style="
                width: 100%; height: 250px; 
@@ -14,10 +15,23 @@
                margin-right: auto;
                "
                >
-               <button @click="imagemAnterior()">previous</button> 
-               <button @click="proximaImagem()">next</button>
+                
+
+               <button @click="imagemAnterior()"
+                       class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+
+                <button   @click="proximaImagem()"
+                class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
                 
           </div>
+
+   
           
                
 
