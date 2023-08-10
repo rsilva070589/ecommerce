@@ -51,8 +51,8 @@
           
           </div>
           
-        <!-- {{store.dadosEmpresa.dadosloja?.fonecel}}-->   
-            (11) 9 7859-3025 / (62) 9 9165-5036
+         {{store.dadosEmpresa.dadosloja?.fonecel}} 
+            
          </div>
 
      
@@ -63,7 +63,7 @@
         <div style=" color: white;">
           <i class="bi bi-geo-alt-fill"></i>  
         </div>
-          Goiania
+          Brasilia
      <!--{{store.dadosEmpresa.dadosloja?.latitude}} - {{store.dadosEmpresa.dadosloja?.longitude}}  --> 
       </div>
  

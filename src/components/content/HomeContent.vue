@@ -105,15 +105,15 @@ import DadosEmpresa   from  './DadosEmpresa.vue';
 import TipoRetirada   from  '../meuspedidos/TipoRetirada.vue'
 import axios          from 'axios';
 import {indexStore}   from  '../../stores/index'
-import dadosProdutos  from '../../data/dadosProdutos.json'
+//import dadosProdutos  from '../../data/dadosProdutos.json'
  
 const store = indexStore(); 
 
-store.grupoProdutos=dadosProdutos.dados.grupos; 
-store.dadosProdutos=dadosProdutos;
+////store.grupoProdutos=dadosProdutos.dados.grupos; 
+//store.dadosProdutos=dadosProdutos;
 
-//store.recursos.carregando = true
-//console.log(store.grupoProdutos )
+store.recursos.carregando = true
+ 
 
 
 const getAmbiente = () => {
@@ -132,8 +132,7 @@ const getAmbiente = () => {
 getAmbiente()
 
 
-const getIp = async () => {
-  
+const getIp = async () => { 
 
     var config = {
       method: 'get',
@@ -153,10 +152,7 @@ const getIp = async () => {
     });
 
 }
-
-
  
-
 
 
 const getEmpresa = ()=> { 
@@ -179,7 +175,7 @@ axios(config)
   store.dadosEmpresa = response.data
   store.recursos.databasecliente = response.data.dadosloja.databasecliente
   console.log(store.dadosEmpresa) 
-  //getProdutos()
+  getProdutos()
   getFormaPgto()
   getBairros() 
   getIp()  
@@ -322,11 +318,12 @@ axios(config)
 });
 
 }
+ 
 
 
 const setProdutos = () => {
 
-  console.log(store.dadosProdutos.dados.grupos)
+  console.log(store.dadosProdutos?.dados.grupos)
   const grupoSemMontagem = g => g.montagemrequerida == false
   const pizza1  = store.dadosProdutos.dados.grupos.filter(grupoSemMontagem)
 
@@ -375,7 +372,7 @@ pizza2.forEach(element => {
 
 }
 
-setProdutos() 
+ 
 
 </script>
 

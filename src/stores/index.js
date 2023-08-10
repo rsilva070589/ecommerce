@@ -78,7 +78,7 @@ export const indexStore = defineStore("rotas", () =>{
         valortroco: 0,
         indexEndereco: 0,
         statusDefinido: 'EM ANDAMENTO',
-        urlprincipal: 'null'
+        imagens: 'null'
         
      }); 
  

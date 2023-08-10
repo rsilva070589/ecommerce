@@ -6,7 +6,7 @@
           
           <div style="">
             <img class="object-cover  md:rounded-none md:rounded" 
-               :src="store.itemSelect.urlprincipal" alt="produto"
+               :src="store.itemSelect.imagens[store.indexImagem]?.url" alt="produto"
                style="
                width: 100%; height: 250px; 
                display: block;
@@ -14,9 +14,13 @@
                margin-right: auto;
                "
                >
+               <button @click="imagemAnterior()">previous</button> 
+               <button @click="proximaImagem()">next</button>
+                
           </div>
           
                
+
           <div style="padding: 10px; display: flex; 
                     justify-content: space-between;
                     font-size: 20px;
@@ -74,10 +78,7 @@
 
       </button>
 
-</div>
- 
-
-  
+</div> 
         
     </div>
 
@@ -95,6 +96,8 @@
  const store = indexStore();
 
  store.dadosEmpresa.ecommerce=true 
+
+ store.indexImagem = 0 
  
 console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo)
  
@@ -156,6 +159,23 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
   }
 
     
+  const proximaImagem = ()=> {
+   
+    if (store.indexImagem < store.itemSelect.imagens.length -1) {
+      store.indexImagem = store.indexImagem +1
+      console.log('index da imagem: '+store.indexImagem)
+    }
+    
+  }
+
+  const imagemAnterior = ()=> {
+   
+   if (store.indexImagem > 0) {
+     store.indexImagem = store.indexImagem -1
+     console.log('index da imagem: '+store.indexImagem)
+   }
+   
+ }
  
    
    </script>

@@ -44,8 +44,8 @@
                 border-bottom: 1px solid wheat;
          "       
          v-for=" (i, index) in store.listaAtualProd" :key="i.cdproduto"       
-         @click="onDetalheProduto(i.cdproduto,i.imagesproduto?.urlprincipal || store.selectItem?.urlprincipal ,i.precofinalvenda,i.descricao,i.detalhes, index);
-              store.selecaoProduto(i.cdproduto,i.precofinalvenda,i.descricao,index, store.selectItem.qtdemax,i.imagesproduto?.urlprincipal || store.selectItem?.urlprincipal)
+         @click="onDetalheProduto(i.cdproduto,i.imagens,i.precofinalvenda,i.descricao,i.detalhes, index);
+              store.selecaoProduto(i.cdproduto,i.precofinalvenda,i.descricao,index, store.selectItem.qtdemax,i.images)
          "
          
          
@@ -54,19 +54,15 @@
                 display: flex;           
                   "  >
             
-            <div v-if="i.imagesproduto?.urlprincipal">
+            <div v-if="i.imagens">
               <img style="width: 130px;
                           height: 110px;
                           
                           " 
-                  :src="i.imagesproduto.urlprincipal" alt="">
+                  :src="i.imagens[0]?.url" alt="">
             </div>
   
-            <div v-if="!i.imagesproduto?.urlprincipal">
-              <img style="width: 130px;
-                          height: 110px;" 
-                  :src="store.selectItem.urlprincipal" alt="">
-            </div>
+           
   
            <div style="  
                           padding: 5px;
@@ -232,19 +228,19 @@
               ordemgrupoadc: b.ordemgrupoadc, 
               orientacao_grupo_adc: b.orientacao_grupo_adc,
               qtdemax: b.qtdemax,
-              qtdemin: b.qtdemin 
+              qtdemin: b.qtdemin
             }  
           })
         })
     
      
   
-  function onDetalheProduto (cdproduto,urlprincipal,precofinalvenda,descricao,detalhes, index) {
+  function onDetalheProduto (cdproduto,imagens,precofinalvenda,descricao,detalhes, index) {
     store.itemSelect.cdproduto = cdproduto 
     store.itemSelect.descricao = descricao 
     store.itemSelect.precofinalvenda = precofinalvenda 
     store.itemSelect.detalhes = detalhes
-    store.itemSelect.urlprincipal = urlprincipal
+    store.itemSelect.imagens = imagens
     store.itemSelect.index = index
     store.recursos.telaContentAtual ='SELECTPRODUTO';
     store.recursos.telaAtualNome    ='DETALHES';
