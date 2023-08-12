@@ -18,10 +18,13 @@
                   </div>
                 </Slide>
 
+                
                 <template #addons>
-                  <Navigation />
-                  <Pagination />
-                </template>
+                  <span style="margin-top: -20px;">
+                    <Pagination />
+                  </span>
+                
+              </template>
               </Carousel>
 
                 
@@ -217,6 +220,6 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
    .carousel__prev,
    .carousel__next {
      box-sizing: content-box;
-     border: 5px solid white;
+     border: 0px solid white;
    }
    </style>
