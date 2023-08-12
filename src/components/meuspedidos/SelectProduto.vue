@@ -11,18 +11,16 @@
                   <div class="carousel__item">
                     <img style="
                             width: 100%; height: 250px; 
-                            display: flex;
-                            margin-left: auto;
-                            margin-right: auto;"
-               :src="slide?.url" alt=""> 
-              </div>
+                            display: flex; "
+                  :src="slide?.url" alt=""> 
+                  </div>
        
                 </Slide>
 
                 
                 <template #addons>
-                  <Pagination style="margin-top: -10px; margin-left: -30px;"/>
-              </template>
+                  <Pagination style="margin-top: -5px; margin-left: -30px;"/>
+                </template>
               </Carousel>
 
                 
@@ -205,7 +203,7 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
      background-color: var(--vc-clr-primary);
      color: var(--vc-clr-white);
      font-size: 20px;
-     border-radius: 8px;
+     border-radius: 0px;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -218,6 +216,6 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
    .carousel__prev,
    .carousel__next {
      box-sizing: content-box;
-     border: 0px solid white;
+     border: 0px solid rgb(17, 16, 16);
    }
    </style>
