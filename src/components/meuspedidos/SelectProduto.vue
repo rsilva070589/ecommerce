@@ -7,20 +7,29 @@
           <div style="">
           
                <Carousel>
-                <Slide v-for="slide in store.itemSelect.imagens" :key="slide">
+                <Slide v-for="slide in store.itemSelect.imagens" :key="slide"
+                style="position: re;"
+                >
                   <div class="carousel__item">
                     <img style="
-                            width: 100%; height: 250px; 
-                            display: flex; "
-                  :src="slide?.url" alt=""> 
+                            width: 100%; height: 250px;  
+                            position: static;" 
+                     :src="slide?.url" alt=""> 
                   </div>
-       
+               
                 </Slide>
 
-                
                 <template #addons>
-                  <Pagination style="margin-top: -5px; margin-left: -30px;"/>
-                </template>
+ 
+                  <Pagination style="    
+                    display: inline-flex;
+                    margin-left: -60px;
+                    margin-top: -40px;  
+                    position: fixed;  
+                    "
+                    />
+                 </template>
+                
               </Carousel>
 
                 
@@ -108,6 +117,7 @@
  import {indexStore} from '../../stores/index'  
  import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
  import 'vue3-carousel/dist/carousel.css'
+ import './css/carousel.css'
  const store = indexStore();
 
  store.dadosEmpresa.ecommerce=true 
@@ -202,11 +212,7 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
      width: 100%;
      background-color: var(--vc-clr-primary);
      color: var(--vc-clr-white);
-     font-size: 20px;
-     border-radius: 0px;
-     display: flex;
-     justify-content: center;
-     align-items: center;
+     font-size: 20px;  
    }
    
    .carousel__slide {
@@ -215,7 +221,6 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
    
    .carousel__prev,
    .carousel__next {
-     box-sizing: content-box;
-     border: 0px solid rgb(17, 16, 16);
+     box-sizing: content-box; 
    }
    </style>
