@@ -193,6 +193,12 @@
   const listaAtualProd =  store.produtos.filter(grupo)  
   
   store.listaAtualProd = listaAtualProd
+
+  store.pizzaSelecao=[];
+            store.adicionalSelecao =[];
+            store.ingredientesSelecao = [];
+            store.ingredientesProduto = [];
+            store.adicionaisItensProduto = [];
   
   
   store.listaAtualProd.map(i => {

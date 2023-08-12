@@ -131,8 +131,7 @@ import {indexStore} from '../../stores/index'
   default:
     // code block
 } 
-}
-
+} 
 
  
 </script>

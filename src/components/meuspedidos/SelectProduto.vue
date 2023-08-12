@@ -5,29 +5,27 @@
     
           
           <div style="">
-            <img  
-              class="d-block w-100"
-               :src="store.itemSelect.imagens[store.indexImagem]?.url" alt="produto"
-               style="
-               width: 100%; height: 250px; 
-               display: block;
-               margin-left: auto;
-               margin-right: auto;
-               "
-               >
+          
+               <Carousel>
+                <Slide v-for="slide in store.itemSelect.imagens" :key="slide">
+                  <div class="carousel__item">
+                    <img style="
+                            width: 100%; height: 250px; 
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto;"
+               :src="slide?.url" alt="">
+                  </div>
+                </Slide>
+
+                <template #addons>
+                  <Navigation />
+                  <Pagination />
+                </template>
+              </Carousel>
+
                 
-
-               <button @click="imagemAnterior()"
-                       class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-
-                <button   @click="proximaImagem()"
-                class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
+ 
                 
           </div>
 
@@ -86,7 +84,9 @@
           <div style="font-size: 20px; color: white;" @click="selectProduto(store.itemSelect.cdproduto, 
                                                                               store.itemSelect.precofinalvenda, 
                                                                               store.itemSelect.descricao)">
+           
               R$ {{store.formataDinheiro(store.somar(),2)}} 
+        
           </div> 
         </div>
 
@@ -107,11 +107,14 @@
  import AdicionaisProduto from './AdicionaisProduto.vue';
  import axios from 'axios';
  import {indexStore} from '../../stores/index'  
+ import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
+ import 'vue3-carousel/dist/carousel.css'
  const store = indexStore();
 
  store.dadosEmpresa.ecommerce=true 
 
  store.indexImagem = 0 
+ 
  
 console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo)
  
@@ -194,7 +197,26 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
    
    </script>
    
-<style>
-
-
-</style>
+   <style>
+   .carousel__item {
+     min-height: 200px;
+     width: 100%;
+     background-color: var(--vc-clr-primary);
+     color: var(--vc-clr-white);
+     font-size: 20px;
+     border-radius: 8px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   
+   .carousel__slide {
+     padding: 10px;
+   }
+   
+   .carousel__prev,
+   .carousel__next {
+     box-sizing: content-box;
+     border: 5px solid white;
+   }
+   </style>
