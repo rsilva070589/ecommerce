@@ -11,19 +11,17 @@
                   <div class="carousel__item">
                     <img style="
                             width: 100%; height: 250px; 
-                            display: block;
+                            display: flex;
                             margin-left: auto;
                             margin-right: auto;"
-               :src="slide?.url" alt="">
-                  </div>
+               :src="slide?.url" alt=""> 
+              </div>
+       
                 </Slide>
 
                 
                 <template #addons>
-                  <span style="margin-top: -20px;">
-                    <Pagination />
-                  </span>
-                
+                  <Pagination style="margin-top: -10px; margin-left: -30px;"/>
               </template>
               </Carousel>
 
