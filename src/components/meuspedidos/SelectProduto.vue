@@ -211,7 +211,7 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
    }
    
    .carousel__slide {
-     padding: 10px;
+     padding: 0px;
    }
    
    .carousel__prev,
