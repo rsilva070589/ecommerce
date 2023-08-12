@@ -1,7 +1,9 @@
 <template>
     <div  style="width: 100%; margin-top: 49px ">
 
-      <div href="#" class="flex flex-col  bg-white rounded-lg border shadow-md md:flex md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+      <div href="#" class="flex flex-col   
+              shadow-md md:flex md:max-w-xl  
+               ">
     
           
           <div style="">
@@ -25,7 +27,7 @@
                     display: inline-flex;
                     margin-left: -60px;
                     margin-top: -40px;  
-                    position: fixed;  
+                    position: absolute;  
                     "
                     />
                  </template>
