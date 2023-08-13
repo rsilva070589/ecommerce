@@ -36,8 +36,7 @@
               store.recursos.telaContentAtual!='LISTAPEDIDO' &&
               store.recursos.telaContentAtual!='MINHACONTA' &&
               store.recursos.telaContentAtual!='AREAENTREGA' &&
-              store.recursos.telaContentAtual!='SELECTPRODUTO'
-              
+              store.recursos.telaContentAtual!='SELECTPRODUTO' 
              "
        style="  
               height: 94vh;    
@@ -173,6 +172,7 @@ var config = {
 axios(config)
 .then(function (response) { 
   store.dadosEmpresa = response.data
+  //store.dadosEmpresa.dadosloja.statususaimgproduto = true
   store.recursos.databasecliente = response.data.dadosloja.databasecliente
   console.log(store.dadosEmpresa) 
   getProdutos()

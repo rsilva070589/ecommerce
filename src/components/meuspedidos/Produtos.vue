@@ -1,34 +1,34 @@
 <template>   
 
   <!-- s/ imagem-->
-  <div v-if="!store.dadosEmpresa.ecommerce">
+  <div v-if="!store.dadosEmpresa.dadosloja.statususaimgproduto">
     <ProdutosLista />
   </div>
   
-  <div v-if="store.dadosEmpresa.ecommerce && store.selectItem.montagemrequerida">
+  <div v-if="store.dadosEmpresa.dadosloja.statususaimgproduto && store.selectItem.montagemrequerida">
     <ProdutosLista />
   </div>
   <!-- s/ imagem-->
    
-  <!--Diversos Imagem-->
-    <div v-if="store.dadosEmpresa.ecommerce && !store.selectItem.montagemrequerida"> 
+  <!--Diversos Imagem--> 
+    <div v-if="store.dadosEmpresa.dadosloja.statususaimgproduto && !store.selectItem.montagemrequerida"> 
     <div :class="(store.pizzaSelecao.length > 0) ? ['fundoSelect'] : ['']"> 
   
      <div class="conteudo" v-if="store.recursos.etapaPedido==1"
                  style="color: white;               
                  height: 85vh;  
                  margin-top: 8px;               
-                 padding: 12px 0px 0px 0px;
+                 padding: 12px 0{{i.descricao}}{{i.descricaoproduto}}  px 0px 0px;
                  background-size: 100% 94vh;               
                  width: 100%; 
                   
      ">
      
-     <div style="padding: 10px; background-color: dimgray; font-size: 20px; 
+     <div style="margin-top: 10px; padding: 10px; background-color: dimgray; font-size: 20px; 
                 
      ">
         <i class="bi bi-chevron-down"></i>
-       CATALAGOS
+       CATALAGO
      </div>   
      
      <div :class="!(store.pizzaSelecao.length >= store.selectItem.qtdemax && store.selectItem.qtdemax > 0) ? ['classeEnable'] : ['classeDisable']"
@@ -46,31 +46,22 @@
          v-for=" (i, index) in store.listaAtualProd" :key="i.cdproduto"       
          @click="onDetalheProduto(i.cdproduto,i.imagens,i.precofinalvenda,i.descricao,i.detalhes, index);
               store.selecaoProduto(i.cdproduto,i.precofinalvenda,i.descricao,index, store.selectItem.qtdemax,i.images)
-         "
-         
-         
+         " 
          >  
-         <div style="
-                display: flex;           
-                  "  >
+         <div 
+                    style="display: flex;
+                   ">
             
             <div v-if="i.imagens">
               <img style="width: 130px;
                           height: 110px;
-                          
                           " 
                   :src="i.imagens[0]?.url" alt="">
             </div>
-  
-           
-  
-           <div style="  
-                          padding: 5px;
-                          width: 210px;
-                          height: 110px;" >
-               
-               {{i.descricao}}{{i.descricaoproduto}}
-               
+           <div style="padding:  5px;
+                       width:  210px;
+                       height: 110px;" >               
+               {{i.descricao}}{{i.descricaoproduto}}               
             
                <span style="font-size: 13px;
                             padding: 0;
@@ -88,8 +79,8 @@
                
               </div> 
          </div> 
-      </div> 
-      
+      </div>  
+     
      </div>  
     </div>
      </div>
@@ -139,7 +130,7 @@
                   style="width: 100%;     
                     margin: 0px 0px 0px 0px;       
                   "    
-              @click="validation(); "
+             
                   >
               <span class="glyphicon glyphicon-ok"></span> 
     

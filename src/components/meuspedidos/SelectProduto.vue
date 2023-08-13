@@ -144,27 +144,9 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
    const selectProduto = (cdproduto, precofinalvenda, descricao,urlprincipal) => {   
     store.pizzaSelecao[0].adicionais=store.adicionalSelecao
     store.pizzaSelecao[0].ingredientes=store.ingredientesSelecao 
-        
-        console.log('add o item:  '+cdproduto + ' ' + descricao)  
-       /**      
-        store.pizzaSelecao.push(          
-                {
-                'cdproduto': cdproduto,
-                'descricao': descricao,
-                'observacao': 'observacao teste componente Produtos',
-                'isadicionalprod': 'n',
-                'valorunitario': precofinalvenda,
-                'quantidade': store.itemSelect.qtde,
-                'valortotal': precofinalvenda * store.itemSelect.qtde
-                }
-            )
-      */
-          //  console.log('valor select : ' +listaAtualProd[index].select)
-            // console.log(store.pizzaSelecao) 
- 
-       // store.pizzaSelecao[0].adicionais=store.adicionalSelecao
-       // store.pizzaSelecao[0].ingredientes=store.ingredientesSelecao
-         
+    store.pizzaSelecao[0].imagens=store.itemSelect.imagens
+
+        console.log('add o item:  '+cdproduto + ' ' + descricao)   
 
                  store.pizzaSelecao.forEach(dados => {                
                                     store.pedido.pedido.pedidoitem.push(dados)
@@ -180,10 +162,7 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
 
    const novoPedido = ()=> {      
      store.pizzaSelecao=[];
-     store.adicionalSelecao =[];
-     store.ingredientesSelecao = [];
-     store.ingredientesProduto = [];
-     store.adicionaisItensProduto = [];
+ 
   }
 
     

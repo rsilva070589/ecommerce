@@ -42,23 +42,15 @@
                 class="grid-container">
 
   
-           <div v-if="store.dadosEmpresa.ecommerce">
-            <img  v-if="pi.url"
+           <div v-if="store.dadosEmpresa.dadosloja.statususaimgproduto">
+            <img  v-if="pi.imagens"
                   style="width: 50px;
                         height: 50px;
                         border-radius: 5px;
                         " 
-                :src="pi.url" alt="">
-
-                <img  v-if="!pi.url"
-                  style="width: 50px;
-                        height: 50px;
-                        border-radius: 5px;" 
-                :src="pi.adicionais[0].url" alt="">    
-
-                   
+                :src="pi.imagens[0]?.url" alt=""> 
           </div>
-
+ 
            
          <div class="item1" style="width: 180px;">
           {{pi.descricao}} - R$ {{store.formataDinheiro(pi.valorunitario * pi.quantidade, 2)}} 
