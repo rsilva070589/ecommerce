@@ -6,7 +6,7 @@
                ">
     
           
-          <div style="">
+          <div v-if="store.itemSelect.imagens?.length > 0">
           
                <Carousel>
                 <Slide v-for="slide in store.itemSelect.imagens" :key="slide"

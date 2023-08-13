@@ -98,7 +98,7 @@
       </div>
       </div>
       <div class="item3"></div>
-      <div class="item3" style="text-align:right;">{{formataDinheiro(p1.valortotal,2)}}</div>
+      <div class="item3" style="text-align:right;">{{store.formataDinheiro(p1.valortotal,2)}}</div>
 
     </div>
   </div>
@@ -110,7 +110,7 @@
       TOTAL ITENS:
     </div>
     <div>
-       {{formataDinheiro(p.pedido.valorpedido - p.pedido.taxaentrega,2)}}   
+       {{store.formataDinheiro(p.pedido.valorpedido - p.pedido.taxaentrega,2)}}   
     </div>
      
   </div>
@@ -120,7 +120,7 @@
       TAXA DE ENTREGA:
     </div>
     <div>
-     + {{formataDinheiro(p.pedido.taxaentrega,2)}}
+     + {{store.formataDinheiro(p.pedido.taxaentrega,2)}}
     </div>    
   </div>
 
@@ -130,7 +130,7 @@
       VALOR PEDIDO
     </div>
     <div style="font-size: 17px;">
-      {{formataDinheiro(p.pedido.valorpedido,2)}}
+      {{store.formataDinheiro(p.pedido.valorpedido,2)}}
     </div>  
   </div>
  
@@ -139,7 +139,7 @@
           troco
         </div>
         <div>
-          {{formataDinheiro(p.pedido.valortroco - p.pedido.valorpedido,2)}}
+          {{store.formataDinheiro(p.pedido.valortroco - p.pedido.valorpedido,2)}}
         </div>       
        
       </div>
