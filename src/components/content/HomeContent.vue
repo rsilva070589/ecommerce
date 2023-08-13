@@ -172,7 +172,7 @@ var config = {
 axios(config)
 .then(function (response) { 
   store.dadosEmpresa = response.data
-  //store.dadosEmpresa.dadosloja.statususaimgproduto = true
+  store.dadosEmpresa.dadosloja.statususaimgproduto = false
   store.recursos.databasecliente = response.data.dadosloja.databasecliente
   console.log(store.dadosEmpresa) 
   getProdutos()
