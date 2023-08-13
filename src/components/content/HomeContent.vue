@@ -21,8 +21,8 @@
         justify-content: center;              
   ">
 
-    <ButtonAvancar v-if="!store.dadosEmpresa.ecommerce" style="position: fixed;"/>
-    <ButtonAvancar v-if="store.dadosEmpresa.ecommerce && store.selectItem.montagemrequerida" style="position: fixed;"/>
+    <ButtonAvancar v-if="!store.dadosEmpresa.statususaimgproduto" style="position: fixed;"/>
+    <ButtonAvancar v-if="store.dadosEmpresa.statususaimgproduto && store.selectItem.montagemrequerida" style="position: fixed;"/>
                 
   </div>
 
@@ -172,7 +172,7 @@ var config = {
 axios(config)
 .then(function (response) { 
   store.dadosEmpresa = response.data
-  store.dadosEmpresa.dadosloja.statususaimgproduto = false
+ // store.dadosEmpresa.dadosloja.statususaimgproduto = false
   store.recursos.databasecliente = response.data.dadosloja.databasecliente
   console.log(store.dadosEmpresa) 
   getProdutos()
@@ -307,8 +307,7 @@ axios(config)
   //console.log(response.data)
   store.grupoProdutos=response.data.dados.grupos
   store.dadosProdutos=response.data
-  //store.grupoProdutos = dadosProdutos.dados.grupos;
-  console.log(store.dadosProdutos)
+  //store.grupoProdutos = dadosProdutos.dados.grupos; 
   setProdutos()
   store.recursos.carregando = false
 })

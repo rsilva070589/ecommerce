@@ -5,8 +5,7 @@
   <div :class="(store.pizzaSelecao.length > 0) ? ['fundoSelect'] : ['']"> 
 
    <div class="conteudo" v-if="store.recursos.etapaPedido==1"
-               style="color: white;
-               
+               style="color: white;               
                height: 85vh;  
                margin-top: 8px;               
                padding: 12px 0px 0px 0px;
@@ -17,12 +16,13 @@
    
    <div style="padding: 10px; background-color: dimgray; font-size: 20px; ">
       <i class="bi bi-chevron-down"></i>
-     2 Sabores   
+      {{ store.grupoProdutos.filter(f=> f.cdgrupo==store.listaAtualProd[0].cdgrupo)[0].orientacaogrupo}}
+   
    </div>   
    
    <div :class="!(store.pizzaSelecao.length >= store.selectItem.qtdemax && store.selectItem.qtdemax > 0) ? ['classeEnable'] : ['classeDisable']"
    >
- 
+
    <div      
    
        :class="{'classeEnable': i.select}"   

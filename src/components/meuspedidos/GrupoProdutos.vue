@@ -11,9 +11,9 @@
               
   ">
   
-  
+   
     <div 
-      @click="selectGrupo(i.cdgrupo,  i.nomegrupo, i.montagemrequerida, i.requeropcional, i.qtdemax, i.qtdemin)"
+      @click="selectGrupo(i.cdgrupo,  i.nomegrupomenu,i.orientacaogrupo, i.montagemrequerida, i.requeropcional, i.qtdemax, i.qtdemin)"
       class="card"
       style="    
              background-color: dimgray; 
@@ -41,15 +41,8 @@
           </div>
         
         </div>  
-      </div>    
-      
-  
-      
-   
+      </div>  
   </div>
-  
-  
-  
   </div> 
   
   <Carregando />
@@ -63,13 +56,10 @@ const store = indexStore();
 store.dadosEmpresa.ecommerce =true 
 
  
-const selectGrupo = (codGrupo,   nomegrupo,  montagemrequerida, requeropcional, qtdemax, qtdemin)=>{
-      if (codGrupo==1){store.selectItem.urlprincipal='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4Zyu-T5WQ7bLxROPZPWo7u65WqNKpnk7NWQ&usqp=CAU'}
-      if (codGrupo==2){store.selectItem.urlprincipal='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4Zyu-T5WQ7bLxROPZPWo7u65WqNKpnk7NWQ&usqp=CAU'}
-      if (codGrupo==3){store.selectItem.urlprincipal='https://bolodamadre.com.br/wp-content/uploads/2020/05/refrigerante-1.jpg'}
-
+const selectGrupo = (codGrupo,   nomegrupomenu,  orientacaogrupo,montagemrequerida, requeropcional, qtdemax, qtdemin)=>{
+      console.log(orientacaogrupo)
     store.recursos.telaContentAtual='PRODUTOS'
-    store.recursos.telaAtualNome=nomegrupo
+    store.recursos.telaAtualNome=nomegrupomenu
     store.selectItem.codGrupo=codGrupo 
     store.recursos.etapaPedido=1  
     store.selectItem.qtdemax=qtdemax
