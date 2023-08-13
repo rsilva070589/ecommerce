@@ -28,7 +28,7 @@
                 
      ">
         <i class="bi bi-chevron-down"></i>
-       CATALAGO
+       CATÁLOGO
      </div>   
      
      <div :class="!(store.pizzaSelecao.length >= store.selectItem.qtdemax && store.selectItem.qtdemax > 0) ? ['classeEnable'] : ['classeDisable']"
