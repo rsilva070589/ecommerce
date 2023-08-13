@@ -1,10 +1,11 @@
 <template>
-    <div  style="width: 100%; margin-top: 49px ">
+    <div  
+    v-if="store.recursos.telaAtualNome!='CARRINHO'"
+    style="width: 100%; margin-top: 49px ">
 
       <div href="#" class="flex flex-col   
               shadow-md md:flex md:max-w-xl  
-               ">
-    
+               ">    
           
           <div v-if="store.itemSelect.imagens?.length > 0">
           

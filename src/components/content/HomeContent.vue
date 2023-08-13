@@ -1,7 +1,9 @@
 <template>
+ 
   <div  style="margin-top: 38px;">
+  
   </div>
-
+  
 
   <div 
         v-if="store.recursos.etapaPedido == 3">
@@ -21,8 +23,8 @@
         justify-content: center;              
   ">
 
-    <ButtonAvancar v-if="!store.dadosEmpresa.statususaimgproduto" style="position: fixed;"/>
-    <ButtonAvancar v-if="store.dadosEmpresa.statususaimgproduto && store.selectItem.montagemrequerida" style="position: fixed;"/>
+    <ButtonAvancar v-if="!store.dadosEmpresa.dadosloja.statususaimgproduto" style="position: fixed;"/>
+    <ButtonAvancar v-if="store.dadosEmpresa.dadosloja.statususaimgproduto && store.selectItem.montagemrequerida" style="position: fixed;"/>
                 
   </div>
 
@@ -172,7 +174,7 @@ var config = {
 axios(config)
 .then(function (response) { 
   store.dadosEmpresa = response.data
- // store.dadosEmpresa.dadosloja.statususaimgproduto = false
+  //store.dadosEmpresa.dadosloja.statususaimgproduto = false
   store.recursos.databasecliente = response.data.dadosloja.databasecliente
   console.log(store.dadosEmpresa) 
   getProdutos()

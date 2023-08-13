@@ -11,7 +11,9 @@
   <!-- s/ imagem-->
    
   <!--Diversos Imagem--> 
-    <div v-if="store.dadosEmpresa.dadosloja.statususaimgproduto && !store.selectItem.montagemrequerida"> 
+  <div v-if="store.dadosEmpresa.dadosloja.statususaimgproduto 
+          && !store.selectItem.montagemrequerida 
+          "> 
     <div :class="(store.pizzaSelecao.length > 0) ? ['fundoSelect'] : ['']"> 
   
      <div class="conteudo" v-if="store.recursos.etapaPedido==1"
@@ -102,16 +104,16 @@
       </div>
     </div> 
   </div> 
-      <!--Diversos Imagem--> 
+  <!--Diversos Imagem--> 
   
      <!-- BOTTTON-->
      <div 
-     v-if="store.dadosEmpresa.ecommerce 
-              && store.recursos.telaContentAtual=='PRODUTOS'
-              && store.recursos.etapaPedido==1
-              && store.selectItem.montagemrequerida ==0
-              && store.pedido.pedido.pedidoitem.length > 0
-              "
+     v-if="  store.dadosEmpresa.ecommerce 
+          && store.recursos.telaContentAtual=='PRODUTOS' 
+          && store.recursos.etapaPedido==1
+          && store.selectItem.montagemrequerida ==0
+          && store.pedido.pedido.pedidoitem.length > 0
+          "
      
           class="" style="position: fixed; 
                              width: 100%;
