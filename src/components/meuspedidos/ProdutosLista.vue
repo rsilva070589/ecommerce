@@ -17,7 +17,7 @@
    
    <div style="padding: 10px; background-color: dimgray; font-size: 20px; ">
       <i class="bi bi-chevron-down"></i>
-     Sabor   
+     2 Sabores   
    </div>   
    
    <div :class="!(store.pizzaSelecao.length >= store.selectItem.qtdemax && store.selectItem.qtdemax > 0) ? ['classeEnable'] : ['classeDisable']"
