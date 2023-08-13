@@ -28,7 +28,7 @@
                 
      ">
         <i class="bi bi-chevron-down"></i>
-       CATÁLOGO
+        {{ store.grupoProdutos.filter(f=> f.cdgrupo==store.listaAtualProd[0].cdgrupo)[0].orientacaogrupo}}
      </div>   
      
      <div :class="!(store.pizzaSelecao.length >= store.selectItem.qtdemax && store.selectItem.qtdemax > 0) ? ['classeEnable'] : ['classeDisable']"

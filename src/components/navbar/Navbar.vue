@@ -123,7 +123,7 @@ import {indexStore} from '../../stores/index'
   break;
   case store.recursos.telaContentAtual=='SELECTPRODUTO':   
         store.recursos.telaContentAtual='PRODUTOS';
-        store.recursos.telaAtualNome='CATALOGO';
+        store.recursos.telaAtualNome= store.grupoProdutos.filter(f=> f.cdgrupo==store.listaAtualProd[0].cdgrupo)[0].nomegrupomenu;
   break;
 
 
