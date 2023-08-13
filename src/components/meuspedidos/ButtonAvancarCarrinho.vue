@@ -50,6 +50,7 @@ const avancar = () =>{
     store.recursos.etapaPedido=3
     store.recursos.telaAtualNome='CARRINHO'  
     store.recursos.alertaCarrinho=false
+    
  
  if (store.selectItem.qtdemax < 2) {    
         store.pizzaSelecao[0].adicionais=store.adicionalSelecao

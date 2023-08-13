@@ -123,7 +123,7 @@ import {indexStore} from '../../stores/index'
   break;
   case store.recursos.telaContentAtual=='SELECTPRODUTO':   
         store.recursos.telaContentAtual='PRODUTOS';
-        store.recursos.telaAtualNome='CATALAGO';
+        store.recursos.telaAtualNome='CATALOGO';
   break;
 
 

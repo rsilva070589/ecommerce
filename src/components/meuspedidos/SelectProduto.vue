@@ -152,19 +152,18 @@ console.log('cod do grupo para filtro de produtos :' + store.selectItem.codGrupo
                                     store.pedido.pedido.pedidoitem.push(dados)
                                 })
    
+     store.recursos.etapaPedido=3
+     store.recursos.telaContentAtual ='PRODUTOS';
+    store.recursos.telaAtualNome='CARRINHO'  
+    store.recursos.alertaCarrinho=false
+    store.itemSelect.qtde=1 
+    store.pizzaSelecao=[];
 
-            store.recursos.telaContentAtual ='PRODUTOS';
-            store.recursos.telaAtualNome    ='CATALAGO';
-            store.itemSelect.qtde=1 
-            novoPedido()
+          
   
    }
 
-   const novoPedido = ()=> {      
-     store.pizzaSelecao=[];
- 
-  }
-
+   
     
   const proximaImagem = ()=> {
    
